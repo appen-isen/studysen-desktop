@@ -1,7 +1,14 @@
-# Tauri + Vanilla TS
+# ISEN Orbit Desktop
 
-This template should help get you started developing with Tauri in vanilla HTML, CSS and Typescript.
+L'application ISEN Orbit est un portage de l'application mobile ISEN Orbit sur Windows, Linux et MacOS.
 
-## Recommended IDE Setup
+## Développement
 
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+1. Tout d'abord, il faut installer les prérequis pour le développement de l'application.
+   https://v2.tauri.app/start/prerequisites/ (ne pas faire la partie sur l'application mobile car on utilise déjà React Native pour ça)
+
+2. Démarragez le projet avec la commande suivante :
+
+    ```bash
+    npm run tauri dev
+    ```
