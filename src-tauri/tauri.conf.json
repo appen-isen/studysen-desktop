@@ -5,9 +5,9 @@
 	"identifier": "fr.isen-orbit.app",
 	"build": {
 		"beforeDevCommand": "npm run dev",
-		"devUrl": "http://localhost:5173",
+		"devUrl": "http://localhost:1420",
 		"beforeBuildCommand": "npm run build",
-		"frontendDist": "../dist/isen-orbit"
+		"frontendDist": "../dist/"
 	},
 	"app": {
 		"withGlobalTauri": true,
@@ -15,7 +15,8 @@
 			{
 				"title": "ISEN Orbit",
 				"width": 800,
-				"height": 600
+				"height": 600,
+				"additionalBrowserArgs": "--disable-web-security --disable-features=msWebOOUI,msPdfOOUI,msSmartScreenProtection"
 			}
 		],
 		"security": {
