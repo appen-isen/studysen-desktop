@@ -15,8 +15,7 @@
 			{
 				"title": "ISEN Orbit",
 				"width": 800,
-				"height": 600,
-				"additionalBrowserArgs": "--disable-web-security --disable-features=msWebOOUI,msPdfOOUI,msSmartScreenProtection"
+				"height": 600
 			}
 		],
 		"security": {

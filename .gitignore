@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Ignore everything in src except preload.ts and README.md
+/src/*
+!/src/preload.ts
+!/src/README.md
