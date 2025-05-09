@@ -39,4 +39,6 @@ const webJsDir = path.join("src", "_expo", "static", "js", "web");
 const jsFile = fs.readdirSync(webJsDir)[0];
 const webJsPath = path.join(webJsDir, jsFile);
 let webJsContent = fs.readFileSync(webJsPath, "utf8");
-webJsContent = webJsContent.replace(/https:\/\/web\.isen-ouest\.fr\/webAurion/g, "http://localhost:11689/");
+webJsContent = webJsContent.replace("https://web.isen-ouest.fr/webAurion", "http://localhost:11689/");
+fs.writeFileSync(webJsPath, webJsContent, "utf8");
+console.log("✅ URL de l'API changée dans le fichier JS");
