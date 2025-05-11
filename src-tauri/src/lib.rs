@@ -11,7 +11,7 @@ pub fn run() {
             let handle = app.handle().clone();
 
             thread::spawn(move || {
-                if let Err(e) = proxy::init(handle) {
+                if let Err(_) = proxy::init(handle) {
                     //S'il y a une erreur on ferme l'application
                     std::process::exit(1);
                 }

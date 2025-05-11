@@ -1,24 +1,24 @@
+use std::str::FromStr;
 use std::sync::Mutex;
+use actix_cors::Cors;
 
 use actix_web::{web, App, HttpRequest, HttpResponse, HttpServer};
-use tauri::http::HeaderMap;
-use tauri::AppHandle;
+use actix_web::http::StatusCode;
+use tauri::{AppHandle, http};
+use http::Method;
 use tauri_plugin_dialog::{DialogExt, MessageDialogKind};
-use tauri_plugin_http::reqwest;
 use tauri_plugin_http::reqwest::Client;
 
 struct TauriAppState {
     app: Mutex<AppHandle>,
 }
 
-const CLIENT: Client = reqwest::Client::new();
-
 async fn proxy(
     req: HttpRequest,
     body: web::Bytes,
     client: web::Data<Client>,
 ) -> actix_web::Result<HttpResponse> {
-    // Construct the target URL
+    // On génère l'URL de la requête
     let uri = format!(
         "https://web.isen-ouest.fr/webAurion{}{}",
         req.uri().path(),
@@ -26,37 +26,64 @@ async fn proxy(
             .query()
             .map_or(String::new(), |q| format!("?{}", q))
     );
+    // La méthode de la requête
+    let method_str = req.method().as_str();
+    let method = Method::from_str(method_str).unwrap_or(Method::GET);
 
-    // Build the reqwest request
+    // On crée la requête avec reqwest
     let mut request_builder = client
-        .request(req.method().clone().parse(), &uri)
+        .request(method, &uri)
         .body(body.to_vec());
 
-    // Copy headers from the original request
-    for (header_name, header_value) in req.headers().iter() {
+    println!("Body: {:?}", body);
+
+    // Copie les en-têtes de la requête d'origine
+    let headers: Vec<(String, String)> = req
+        .headers()
+        .iter()
+        .map(|(header_name, header_value)| {
+            (
+                header_name.as_str().to_string(),
+                header_value.to_str().unwrap_or("").to_string(),
+            )
+        })
+        .collect();
+    for (header_name, header_value) in headers {
+        println!("Added header to request: {}: {}", header_name, header_value);
         request_builder = request_builder.header(header_name, header_value);
     }
 
-    // Send the request and await the response
+    // Ajout de headers supplémentaires
+    request_builder = request_builder.header("Host", "web.isen-ouest.fr");
+    request_builder = request_builder.header("Origin", "https://web.isen-ouest.fr");
+    request_builder = request_builder.header("Referer", "https://web.isen-ouest.fr/webAurion/");
+
+    println!("Request body: {:?}", request_builder);
+    // On envoie la requête
     let response = request_builder
         .send()
         .await
         .map_err(actix_web::error::ErrorInternalServerError)?;
 
-    // Build the Actix Web HttpResponse from the reqwest response
-    let mut actix_response = HttpResponse::build(response.status());
+    // On génère la réponse depuis la réponse de reqwest
+    let status = response.status().as_u16();
+    let mut actix_response = HttpResponse::build(StatusCode::from_u16(status).unwrap_or(StatusCode::OK));
 
-    // Copy headers from the reqwest response
+    // On copie les headers depuis la réponse de reqwest
     for (header_name, header_value) in response.headers().iter() {
-        actix_response.append_header((header_name.clone(), header_value.clone()));
+        let new_header_name = header_name.as_str();
+        let new_header_value = header_value.to_str().unwrap_or("");
+        println!("Added header to response: {}: {}", new_header_name, new_header_value);
+        actix_response.append_header((new_header_name, new_header_value));
     }
 
-    // Read the response body
+    // On lit la réponse en bytes
     let bytes = response
         .bytes()
         .await
         .map_err(actix_web::error::ErrorInternalServerError)?;
 
+    println!("Response body: {:?}", bytes);
     Ok(actix_response.body(bytes))
 }
 
@@ -71,14 +98,15 @@ pub async fn init(app: AppHandle) -> std::io::Result<()> {
     let port: u16 = 11689;
     println!("Listening on port {port}...");
     // On démarre le serveur HTTP
-    match (HttpServer::new(move || {
+    match HttpServer::new(move || {
         let tauri_app_instance = tauri_app_clone.clone();
         App::new()
+            .wrap(Cors::permissive())
             .app_data(tauri_app_instance)
             .app_data(web::Data::new(client.clone()))
             .default_service(web::to(proxy))
     })
-    .bind(("127.0.0.1", port)))
+        .bind(("127.0.0.1", port))
     {
         Ok(server) => server.run().await?,
         Err(e) => {
