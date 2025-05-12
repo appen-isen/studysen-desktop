@@ -23,7 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 
-# Ignore everything in src except preload.ts and README.md
+# Ignore everything in src except TypeScript files and README.md
 /src/*
-!/src/preload.ts
+!/src/*.ts
 !/src/README.md
