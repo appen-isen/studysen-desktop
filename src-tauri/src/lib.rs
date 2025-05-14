@@ -1,14 +1,16 @@
+mod encryption;
 mod requests;
 mod stores;
 
 use crate::requests::{send_get, send_post};
+use crate::stores::{delete_secure_item, get_secure_item, set_secure_item};
 use std::sync::Arc;
 use std::time::Duration;
 use tauri::Manager;
 use tauri_plugin_http::reqwest::cookie::Jar;
 use tauri_plugin_http::reqwest::Client;
 
-struct HttpClient {
+struct AppState {
     client: Client,
 }
 
@@ -22,24 +24,17 @@ pub fn run() {
         .expect("Failed to build client");
 
     tauri::Builder::default()
-        .plugin(tauri_plugin_store::Builder::new().build())
-        .setup(|app| {
-            // Secure Store
-            let salt_path = app
-                .app_handle()
-                .path()
-                .app_local_data_dir()
-                .expect("could not resolve app local data path")
-                .join("salt.txt");
-            app.handle()
-                .plugin(tauri_plugin_stronghold::Builder::with_argon2(&salt_path).build())?;
-
-            Ok(())
-        })
-        .manage(HttpClient { client })
-        .invoke_handler(tauri::generate_handler![send_post, send_get])
+        .manage(AppState { client })
+        .invoke_handler(tauri::generate_handler![
+            send_post,
+            send_get,
+            get_secure_item,
+            set_secure_item,
+            delete_secure_item
+        ])
         .plugin(tauri_plugin_http::init())
         .plugin(tauri_plugin_opener::init())
+        .plugin(tauri_plugin_store::Builder::new().build())
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

@@ -1,11 +1,11 @@
-use crate::HttpClient;
+use crate::AppState;
 use std::collections::HashMap;
 use tauri::State;
 
 // Requête POST
 #[tauri::command]
 pub async fn send_post(
-    state: State<'_, HttpClient>,
+    state: State<'_, AppState>,
     url: String,
     params: HashMap<String, String>,
 ) -> Result<String, String> {
@@ -23,7 +23,7 @@ pub async fn send_post(
 
 // Requête GET
 #[tauri::command]
-pub async fn send_get(state: State<'_, HttpClient>, url: String) -> Result<String, String> {
+pub async fn send_get(state: State<'_, AppState>, url: String) -> Result<String, String> {
     let response = state
         .client
         .get(url)
