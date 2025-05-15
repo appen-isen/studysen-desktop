@@ -8,6 +8,7 @@ use std::sync::Arc;
 use std::time::Duration;
 use tauri_plugin_http::reqwest::cookie::Jar;
 use tauri_plugin_http::reqwest::Client;
+use tauri_plugin_updater::UpdaterExt;
 
 struct AppState {
     client: Client,
@@ -23,6 +24,13 @@ pub fn run() {
         .expect("Failed to build client");
 
     tauri::Builder::default()
+        .setup(|app| {
+            let handle = app.handle().clone();
+            tauri::async_runtime::spawn(async move {
+                update(handle).await.unwrap();
+            });
+            Ok(())
+        })
         .manage(AppState { client })
         .invoke_handler(tauri::generate_handler![
             send_post,
@@ -33,9 +41,34 @@ pub fn run() {
             get_item,
             delete_item,
         ])
+        .plugin(tauri_plugin_updater::Builder::new().build())
         .plugin(tauri_plugin_http::init())
         .plugin(tauri_plugin_opener::init())
         .plugin(tauri_plugin_store::Builder::new().build())
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
+}
+
+//Mise à jour de l'application
+async fn update(app: tauri::AppHandle) -> tauri_plugin_updater::Result<()> {
+    if let Some(update) = app.updater()?.check().await? {
+        println!("Mise à jour disponible");
+        let mut downloaded = 0;
+        update
+            .download_and_install(
+                |chunk_length, content_length| {
+                    downloaded += chunk_length;
+                    println!("Téléchargement {downloaded} sur {content_length:?}");
+                },
+                || {
+                    println!("Téléchargement terminé");
+                },
+            )
+            .await?;
+
+        println!("Mise à jour terminée");
+        app.restart();
+    }
+
+    Ok(())
 }

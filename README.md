@@ -13,7 +13,7 @@ L'application ISEN Orbit est un portage de l'application mobile ISEN Orbit sur W
     npm install
     ```
 
-3. Ensuite, vous pouvez lancer le site Web Expo avec la commande suivante dans le repértoire de l'application mobile ISEN Orbit :
+3. Ensuite, vous pouvez lancer le site Web Expo avec la commande suivante dans le repértoire de l'application mobile ISEN Orbit (autre repository que celui-ci sur GitHub) :
 
     ```bash
     npm run web
@@ -25,4 +25,14 @@ L'application ISEN Orbit est un portage de l'application mobile ISEN Orbit sur W
 
     ```bash
     npm run tauri dev
+    ```
+
+## Build
+
+1. Effectuez vos modifications et faites un push quand cela est fini.
+
+2. Ensuite, vous pouvez builder l'application avec la commande suivante :
+
+    ```bash
+    npm run build
     ```

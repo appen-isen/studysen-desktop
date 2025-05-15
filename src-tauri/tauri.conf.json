@@ -1,11 +1,11 @@
 {
     "$schema": "https://schema.tauri.app/config/2",
-    "productName": "desktop-app",
+    "productName": "ISEN Orbit",
     "version": "0.1.0",
     "identifier": "fr.isen-orbit.app",
     "build": {
         "devUrl": "http://localhost:8081",
-        "beforeBuildCommand": "npm run setup-web && npm run build",
+        "beforeBuildCommand": "npm run setup-web",
         "frontendDist": "../dist/"
     },
     "app": {
@@ -13,8 +13,8 @@
         "windows": [
             {
                 "title": "ISEN Orbit",
-                "width": 1024,
-                "height": 600,
+                "width": 1280,
+                "height": 720,
                 "center": true
             }
         ],
@@ -25,6 +25,7 @@
     "bundle": {
         "active": true,
         "targets": "all",
+        "createUpdaterArtifacts": true,
         "icon": [
             "icons/32x32.png",
             "icons/128x128.png",
@@ -32,5 +33,16 @@
             "icons/icon.icns",
             "icons/icon.ico"
         ]
+    },
+    "plugins": {
+        "updater": {
+            "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDFBQzhGRkUwNjkzREM5MzkKUldRNXlUMXA0UC9JR21YWHVxeTNrV2Z5WTNTQ1Y4ZGxXQUNaWVZ4NmdlVitKaUlBV2NCaytyYnQK",
+            "endpoints": [
+                "https://github.com/appen-isen/isen-orbit-desktop/releases/latest/download/latest.json"
+            ],
+            "windows": {
+                "installMode": "passive"
+            }
+        }
     }
 }
