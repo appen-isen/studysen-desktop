@@ -29,10 +29,24 @@ L'application ISEN Orbit est un portage de l'application mobile ISEN Orbit sur W
 
 ## Build
 
-1. Effectuez vos modifications et faites un push quand cela est fini.
+1. Mettre à jour le fichier `src-tauri/tauri.conf.json` et `package.json` avec la nouvelle version de l'application.
 
-2. Ensuite, vous pouvez builder l'application avec la commande suivante :
+2. Effectuez vos modifications et faites un push quand cela est fini.
 
-    ```bash
+3. Ensuite, vous pouvez builder l'application avec la commande suivante, la clé privée de signature doit être renseignée dans la variable d'environnement `TAURI_SIGNING_PRIVATE_KEY` (vous pouvez la trouver dans le drive dédié aux clés) :
+
+    - **Pour Windows** (dans PowerShell) :
+
+    ```powershell
+    $env:TAURI_SIGNING_PRIVATE_KEY="CHEMIN VERS CLÉ PRIVÉE"
     npm run build
     ```
+
+    - **Pour Linux/MacOS** :
+
+    ```bash
+    export TAURI_SIGNING_PRIVATE_KEY="CHEMIN VERS CLÉ PRIVÉE"
+    npm run build
+    ```
+
+4. Puis, il faut remplir le fichier latest.json avec toutes les informations (url, signature, date, version, etc...) et publier une release sur GitHub avec la version correspondante. Les fichiers du build (ex: ISEN Orbit_0.1.0_x64-setup.exe) ainsi que le fichier latest.json doivent être dans la release.
