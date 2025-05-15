@@ -16,8 +16,8 @@
             "url": ""
         },
         "windows-x86_64": {
-            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRNXlUMXA0UC9JR3F1UGtwMnhscVArTCt6V3R6T1hpbm9RWUxOcE9QSWdzK29TK2RMTzNlQVJuWGlzQlNjdVROWXhqWHdneG9TWHgyWW5ocmZST3hPVWhIZ1pTQlRRVlEwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzQ3MzM1MTYwCWZpbGU6SVNFTiBPcmJpdF8wLjEuMF94NjRfZW4tVVMubXNpCmt5RFFkVGFmZEptZW1nRkVtM2F4cVZMbGVLNE1Fa09aTWlmczcwYVloUkJCdXByNFdvTzBVMklNbDhUSTlDcU1JRDNIWHNINzdTZTNIMHAyc3Fjd0N3PT0K",
-            "url": "https://github.com/appen-isen/isen-orbit-desktop/releases/download/v0.1.0/ISEN_Orbit_Desktop_0.1.0.msi"
+            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRNXlUMXA0UC9JR3A0VEg2Uzk0TVNnakkvSkJacERyakx3WTRUUWo5YmhwUE1IVEkvTE02WHpmaTNuM24wbmZMQVc4WnpHN21Ed2NQVzBBeEkyMTlRSndBVEVGY0Zod2dBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzQ3MzM1MTYwCWZpbGU6SVNFTiBPcmJpdF8wLjEuMF94NjQtc2V0dXAuZXhlCmdGK1JmbzR1SUdPemFPQllrYnZDa05iNXJ1eE96dy9SU0RzR3BBeDRSbUZqcVI4YTNpR1ZOVXFXZzUrSC9sOE5nVzhuMFBIWVBmcm9LU09tc2Iya0F3PT0K",
+            "url": "https://github.com/appen-isen/isen-orbit-desktop/releases/download/v0.1.0/ISEN Orbit_0.1.0_x64-setup.exe"
         }
     }
 }
