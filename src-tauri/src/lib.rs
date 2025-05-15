@@ -3,10 +3,9 @@ mod requests;
 mod stores;
 
 use crate::requests::{send_get, send_post};
-use crate::stores::{delete_secure_item, get_secure_item, set_secure_item};
+use crate::stores::{delete_item, get_item, get_secure_item, set_item, set_secure_item};
 use std::sync::Arc;
 use std::time::Duration;
-use tauri::Manager;
 use tauri_plugin_http::reqwest::cookie::Jar;
 use tauri_plugin_http::reqwest::Client;
 
@@ -30,7 +29,9 @@ pub fn run() {
             send_get,
             get_secure_item,
             set_secure_item,
-            delete_secure_item
+            set_item,
+            get_item,
+            delete_item,
         ])
         .plugin(tauri_plugin_http::init())
         .plugin(tauri_plugin_opener::init())
