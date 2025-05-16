@@ -5,7 +5,9 @@
     "type": "module",
     "scripts": {
         "build": "tauri build",
-        "setup-web": "zx setup.mjs",
+        "setup-web": "zx setup-web.mjs",
+        "pre-update": "zx pre-update.mjs",
+        "post-update": "zx post-update.mjs",
         "tauri": "tauri"
     },
     "dependencies": {
