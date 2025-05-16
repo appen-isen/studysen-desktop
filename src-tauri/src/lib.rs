@@ -25,6 +25,7 @@ pub fn run() {
 
     tauri::Builder::default()
         .setup(|app| {
+            println!("Version: {}", app.package_info().version.to_string());
             let handle = app.handle().clone();
             tauri::async_runtime::spawn(async move {
                 update(handle).await.unwrap();

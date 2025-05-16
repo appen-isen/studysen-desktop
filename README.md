@@ -49,4 +49,4 @@ L'application ISEN Orbit est un portage de l'application mobile ISEN Orbit sur W
     npm run build
     ```
 
-4. Puis, il faut remplir le fichier latest.json avec toutes les informations (url, signature, date, version, etc...) et publier une release sur GitHub avec la version correspondante. Les fichiers du build (ex: ISEN Orbit_0.1.0_x64-setup.exe) ainsi que le fichier latest.json doivent être dans la release.
+4. Puis, il faut créer une release sur GitHub avec le tag `vX.X.X` (X.X.X étant la version de l'application) et uploader les fichiers `src-tauri/target/release/bundle/nsis/ISEN-Orbit_0.1.0_x64-setup.exe` et `latest.json` dans la release.

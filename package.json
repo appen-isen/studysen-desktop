@@ -4,7 +4,7 @@
     "version": "0.1.0",
     "type": "module",
     "scripts": {
-        "build": "tauri build",
+        "build": "tauri build && npm run post-update",
         "setup-web": "zx setup-web.mjs",
         "pre-update": "zx pre-update.mjs",
         "post-update": "zx post-update.mjs",

@@ -5,7 +5,7 @@
     "identifier": "fr.isen-orbit.app",
     "build": {
         "devUrl": "http://localhost:8081",
-        "beforeBuildCommand": "npm run setup-web",
+        "beforeBuildCommand": "npm run setup-web && npm run pre-update",
         "frontendDist": "../dist/"
     },
     "app": {

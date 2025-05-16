@@ -2,7 +2,6 @@
 
 import { question, $ } from "zx";
 import fs from "fs";
-import { sign } from "crypto";
 
 const latestJSON = "latest.json";
 
@@ -28,5 +27,8 @@ latestData.platforms["windows-x86_64"] = {
     url: `https://github.com/appen-isen/isen-orbit-desktop/releases/download/v${latestData.version}/ISEN-Orbit_${latestData.version}_x64-setup.exe`
 }
 
-
 console.log("✅ Post-update terminée !");
+console.log("Il faut maintenant créer une nouvelle release sur GitHub avec le tag v" + latestData.version);
+console.log("Et mettre dans cette release les fichiers exécutables suivants :");
+console.log(" - src-tauri/target/bundle/nsis/ISEN-Orbit_" + latestData.version + "_x64-setup.exe");
+console.log(" - latest.json");
