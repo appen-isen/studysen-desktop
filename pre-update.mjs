@@ -53,3 +53,5 @@ filesToUpdate.forEach((file) => {
 });
 
 console.log("✅ Pré-update terminée !");
+// Ajoute un délai rapide avant de terminer le script
+await new Promise(resolve => setTimeout(resolve, 500));
