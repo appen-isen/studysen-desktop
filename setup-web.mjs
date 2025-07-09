@@ -3,7 +3,7 @@
 import { question, $ } from "zx";
 
 // On récupère le chemin vers l'app Expo à exporter
-let defaultPath = "../isen-orbit";
+let defaultPath = "../studysen";
 let appPath = await question(`Chemin vers l'app Expo à exporter ? (par défaut: ${defaultPath}): `);
 appPath = appPath.trim() || defaultPath;
 

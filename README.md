@@ -1,6 +1,6 @@
-# ISEN Orbit Desktop
+# Studysen Desktop
 
-L'application ISEN Orbit est un portage de l'application mobile ISEN Orbit sur Windows, Linux et MacOS.
+L'application Studysen est un portage de l'application mobile Studysen sur Windows, Linux et MacOS.
 
 ## Développement
 
@@ -13,7 +13,7 @@ L'application ISEN Orbit est un portage de l'application mobile ISEN Orbit sur W
     npm install
     ```
 
-3. Ensuite, vous pouvez lancer le site Web Expo avec la commande suivante dans le repértoire de l'application mobile ISEN Orbit (autre repository que celui-ci sur GitHub) :
+3. Ensuite, vous pouvez lancer le site Web Expo avec la commande suivante dans le repértoire de l'application mobile Studysen (autre repository que celui-ci sur GitHub) :
 
     ```bash
     npm run web
@@ -49,4 +49,4 @@ L'application ISEN Orbit est un portage de l'application mobile ISEN Orbit sur W
     npm run build
     ```
 
-4. Puis, il faut créer une release sur GitHub avec le tag `vX.X.X` (X.X.X étant la version de l'application) et uploader les fichiers `src-tauri/target/release/bundle/nsis/ISEN-Orbit_0.1.0_x64-setup.exe` et `latest.json` dans la release.
+4. Puis, il faut créer une release sur GitHub avec le tag `vX.X.X` (X.X.X étant la version de l'application) et uploader les fichiers `src-tauri/target/release/bundle/nsis/Studysen_0.1.0_x64-setup.exe` et `latest.json` dans la release.

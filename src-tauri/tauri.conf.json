@@ -1,8 +1,8 @@
 {
     "$schema": "https://schema.tauri.app/config/2",
-    "productName": "ISEN-Orbit",
+    "productName": "Studysen",
     "version": "0.1.1",
-    "identifier": "fr.isen-orbit.app",
+    "identifier": "fr.studysen.app",
     "build": {
         "devUrl": "http://localhost:8081",
         "beforeBuildCommand": "npm run setup-web && npm run pre-update",
@@ -12,7 +12,7 @@
         "withGlobalTauri": true,
         "windows": [
             {
-                "title": "ISEN Orbit",
+                "title": "Studysen",
                 "width": 1280,
                 "height": 720,
                 "center": true
@@ -36,9 +36,7 @@
         "windows": {
             "nsis": {
                 "installMode": "currentUser",
-                "languages": [
-                    "French"
-                ],
+                "languages": ["French"],
                 "installerIcon": "icons/icon.ico"
             }
         }
@@ -47,7 +45,7 @@
         "updater": {
             "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDFBQzhGRkUwNjkzREM5MzkKUldRNXlUMXA0UC9JR21YWHVxeTNrV2Z5WTNTQ1Y4ZGxXQUNaWVZ4NmdlVitKaUlBV2NCaytyYnQK",
             "endpoints": [
-                "https://github.com/appen-isen/isen-orbit-desktop/releases/latest/download/latest.json"
+                "https://github.com/appen-isen/studysen-desktop/releases/latest/download/latest.json"
             ],
             "windows": {
                 "installMode": "passive"
