@@ -29,11 +29,7 @@ L'application Studysen est un portage de l'application mobile Studysen sur Windo
 
 ## Build
 
-1. Mettre à jour le fichier `src-tauri/tauri.conf.json` et `package.json` avec la nouvelle version de l'application.
-
-2. Effectuez vos modifications et faites un push quand cela est fini.
-
-3. Ensuite, vous pouvez builder l'application avec la commande suivante, la clé privée de signature doit être renseignée dans la variable d'environnement `TAURI_SIGNING_PRIVATE_KEY` (vous pouvez la trouver dans le drive dédié aux clés) :
+1. Vous pouvez builder l'application avec la commande suivante, la clé privée de signature doit être renseignée dans la variable d'environnement `TAURI_SIGNING_PRIVATE_KEY` (vous pouvez la trouver dans le drive dédié aux clés) :
 
     - **Pour Windows** (dans PowerShell) :
 
@@ -49,4 +45,6 @@ L'application Studysen est un portage de l'application mobile Studysen sur Windo
     npm run build
     ```
 
-4. Puis, il faut créer une release sur GitHub avec le tag `vX.X.X` (X.X.X étant la version de l'application) et uploader les fichiers `src-tauri/target/release/bundle/nsis/Studysen_0.1.0_x64-setup.exe` et `latest.json` dans la release.
+2. Maintenant, il suffit de faire un commit et un push sur GitHub car le numéro de version de l'application à été incrémenté automatiquement dans les fichiers de configuration.
+
+3. Puis, il faut créer une release sur GitHub avec le tag `vX.X.X` (X.X.X étant la version de l'application) et uploader les fichiers `src-tauri/target/release/bundle/nsis/Studysen_0.1.0_x64-setup.exe` et `latest.json` dans la release.

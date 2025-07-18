@@ -7,6 +7,7 @@ use crate::stores::{delete_item, get_item, get_secure_item, set_item, set_secure
 use std::sync::Arc;
 use std::time::Duration;
 use tauri_plugin_http::reqwest::cookie::Jar;
+use tauri_plugin_http::reqwest::header::{HeaderMap, HeaderValue};
 use tauri_plugin_http::reqwest::Client;
 use tauri_plugin_updater::UpdaterExt;
 
@@ -17,9 +18,23 @@ struct AppState {
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     let cookie_store = Arc::new(Jar::default());
+    // Configuration des en-têtes par défaut
+    let mut default_headers = HeaderMap::new();
+    default_headers.insert(
+        "Accept-Language",
+        HeaderValue::from_static("fr-FR,fr;q=0.9,en-US;q=0.8"),
+    );
+    default_headers.insert(
+        "Accept",
+        HeaderValue::from_static("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"),
+    );
+
+    // Client HTTP pour les requêtes
     let client = Client::builder()
         .timeout(Duration::from_secs(10))
         .cookie_provider(cookie_store)
+        .user_agent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
+        .default_headers(default_headers)
         .build()
         .expect("Failed to build client");
 
