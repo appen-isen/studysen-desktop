@@ -11,6 +11,7 @@ console.log("⏳ Export en cours...");
 await $`cd ${appPath} && npx expo export --platform web`.pipe(process.stdout);
 
 console.log("⏳ Copie des fichiers...");
+await $`mkdir -p ./dist/`.pipe(process.stdout);
 await $`cp -r ${appPath}/dist/* ./dist/`.pipe(process.stdout);
 
 console.log("✅ Build web terminé et copié dans dist/");
