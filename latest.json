@@ -1,7 +1,7 @@
 {
-    "version": "0.1.3",
-    "notes": "maj frontend studysen",
-    "pub_date": "2025-08-30T12:38:21Z",
+    "version": "0.1.4",
+    "notes": "update design",
+    "pub_date": "2026-09-09T18:34:42Z",
     "platforms": {
         "darwin-x86_64": {
             "signature": "",
@@ -16,8 +16,8 @@
             "url": ""
         },
         "windows-x86_64": {
-            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRNXlUMXA0UC9JR2tyeTRiN1g0UUk1ZGZhZDBVK0hPZ0Q0OWZ0Ly9NU29PdlB6enc0WnpxZFpRbVgrQWxMS3VuWnhyWFNqMjRzZ0htZ1dMNWtOMnVteEhDYUxqZmVadFFFPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzU2NTU3NDkxCWZpbGU6U3R1ZHlzZW5fMC4xLjNfeDY0LXNldHVwLmV4ZQpoT0w1ZnF4WFc5NXBaajc4L05sMXdlZk1VZXlJL3NoOWZwVTJQMnRkcDhYZlVFSHFnTzdMcVYzRXZYbS82a2ZOWGI3aHhISEhxZ1hTTTQzT3JNVFZDdz09Cg==",
-            "url": "https://github.com/appen-isen/studysen-desktop/releases/download/v0.1.3/Studysen_0.1.3_x64-setup.exe"
+            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRNXlUMXA0UC9JR2w2cGVjbnVuTDZqUGYxSndPSlBwdGZRRi9qWVNsVUFWdmU0YmhLclAyaU1JUUFZN2kyNmhyTWExNjUrakNUalZMTDBGMVpGRGpwdnF2UDh2MDFpVkFzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg4OTc4ODc3CWZpbGU6U3R1ZHlzZW5fMC4xLjRfeDY0LXNldHVwLmV4ZQpMNmZuRVViYU5rWFdsYzIwcU9HTGh5S01vUFhRZmZyMUl1RnFtek54TzJLRDhNMTR6MGpkY2pVQVZLbDRFakRGQm1rTUtaU3NWWU14ekNwcllDU2FEdz09Cg==",
+            "url": "https://github.com/appen-isen/studysen-desktop/releases/download/v0.1.4/Studysen_0.1.4_x64-setup.exe"
         }
     }
 }
